@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <title>Meme Generator</title>
 </head>
-<body>
+<body onload="onInit()">
     <h1>Meme Generator</h1>
+    <input class="text" type="text" placeholder="Enter text here" onkeyup="onAddText()"/><br>
+     
+
+    <div class="canvas-container">
+        <canvas width="400" height="400" style="outline:1px solid black"></canvas>
+      </div>
+
+
+    <div class="images-container grid">
+        
+    </div>
+
+
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 </html>
