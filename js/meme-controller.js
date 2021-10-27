@@ -30,7 +30,9 @@ function drawImg() {
     img.src = `./meme-imgs (square)/${getImgId()}.jpg`;
     img.onload = () => {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-      drawText(getText(), 10, 50);
+      const text = getLine().txt
+      const {x,y} = getLine().pos;
+      drawText(text, x, y);
     };
   }
 
@@ -38,8 +40,9 @@ function drawImg() {
   function drawText(text, x, y) {
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black';
-    gCtx.fillStyle = 'white';
-    gCtx.font = '40px Impact';
+    gCtx.textAlign = `${getLine().align}`
+    gCtx.fillStyle = `${getLine().color}`;
+    gCtx.font = `${getLine().size}px Impact`;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
   }
@@ -48,4 +51,14 @@ function drawImg() {
       const elText = document.querySelector('.text').value;
       addText(elText);
       drawImg();
+  }
+
+  function onChangeTxtSize(btn) {
+    changeTxtSize(btn.innerHTML);
+    drawImg();
+  }
+
+  function onChangeLinePos(btn) {
+    changeLinePos(btn.innerHTML);
+    drawImg()
   }
