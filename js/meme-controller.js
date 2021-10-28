@@ -6,18 +6,16 @@ var gCtx;
 function onInit() {
   gElCanvas = document.querySelector('canvas');
   gCtx = gElCanvas.getContext('2d');
-  gElCanvas = document.querySelector('canvas');
-  gCtx = gElCanvas.getContext('2d');
   drawImg();
   renderImgs();
 }
 
 
 function renderImgs() {
-  let imagesContainer = document.querySelector(".images-container");
+  let elImagesContainer = document.querySelector(".images-container");
   let images = getImgsForDisplay();
   images.forEach(img => {
-    imagesContainer.innerHTML += `<img class="img img-${img.id}" onclick="onSelectImg(${img.id})" src="${img.url}"/>`
+    elImagesContainer.innerHTML += `<img class="img img-${img.id}" onclick="onSelectImg(${img.id})" src="${img.url}"/>`
   });
 }
 

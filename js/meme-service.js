@@ -62,6 +62,11 @@ function selectImg(imgId) {
     gMeme.lines.forEach(line => {
         line.txt = 'ENTER TEXT HERE';
     })
+    if (gMeme.lines.length > 2) {
+        gMeme.lines.splice(2);
+        gMeme.selectedLineIdx = 0;
+        gMeme.lines[0].isSelected = true;
+    }
 }
 
 
@@ -69,18 +74,18 @@ function addLine() {
     gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
     gMeme.lines.push(
         {
-        txt: 'ENTER TEXT HERE',
-        size: 40,
-        align: 'center',
-        color: 'white',
-        pos: {
-            x: gElCanvas.width/2,
-            y: 200
-        },
-        isSelected: true 
-    }
+            txt: 'ENTER TEXT HERE',
+            size: 40,
+            align: 'center',
+            color: 'white',
+            pos: {
+                x: gElCanvas.width / 2,
+                y: 200
+            },
+            isSelected: true
+        }
     )
-    gMeme.selectedLineIdx = gMeme.lines.length-1;
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
 
@@ -100,7 +105,6 @@ function changeTxtSize(btn) {
     const line = getLineSelected();
     if (btn === '-') line.size -= 1;
     else line.size += 1;
-    console.log(line);
 }
 
 
@@ -114,7 +118,7 @@ function changeLinePos(btn) {
 function switchLine() {
     gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
-    else gMeme.selectedLineIdx += 1;    
+    else gMeme.selectedLineIdx += 1;
     gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
 }
 
