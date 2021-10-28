@@ -9,15 +9,17 @@
 </head>
 <body onload="onInit()">
     <h1>Meme Generator</h1>
-    <input class="text" type="text" placeholder="Enter text here" onkeyup="onAddText()"/><br>
+    <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()"/><br>
      <button class="text-size" onclick="onChangeTxtSize(this)">-</button>
      <button class="text-size" onclick="onChangeTxtSize(this)">+</button>
      <button class="text-position" onclick="onChangeLinePos(this)">↑</button>
      <button class="text-position" onclick="onChangeLinePos(this)">↓</button>
+     <button class="switch-line" onclick="onSwitchLine()">↕</button>
 
     <div class="canvas-container">
         <canvas width="400" height="400" style="outline:1px solid black"></canvas>
       </div>
+    
 
 
     <div class="images-container grid">

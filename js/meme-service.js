@@ -19,8 +19,6 @@ var gImgs = [
     { id: 16, url: './meme-imgs (square)/16.jpg', keywords: [''] },
     { id: 17, url: './meme-imgs (square)/17.jpg', keywords: [''] },
     { id: 18, url: './meme-imgs (square)/18.jpg', keywords: [''] }
-
-
 ]
 
 var gMeme = {
@@ -28,15 +26,28 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Idgsgs',
+            txt: 'ENTER TEXT HERE',
             size: 40,
             align: 'center',
             color: 'white',
             pos: {
                 x: 200,
                 y: 50
-            }
+            },
+            isSelected: true
+        },
+        {
+            txt: 'ENTER TEXT HERE',
+            size: 40,
+            align: 'center',
+            color: 'white',
+            pos: {
+                x: 200,
+                y: 380
+            },
+            isSelected: false
         }
+
     ]
 }
 
@@ -45,30 +56,55 @@ function getImgsForDisplay() {
     return gImgs;
 }
 
+
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;
 }
+
 
 function addText(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text;
 }
 
+
 function changeTxtSize(btn) {
-    if (btn === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 1;
-    else gMeme.lines[gMeme.selectedLineIdx].size += 1;
+    const line = getLineSelected();
+    if (btn === '-') line.size -= 1;
+    else line.size += 1;
+    console.log(line);
 }
 
 
 function changeLinePos(btn) {
-    if (btn === '↑') gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10;
-    else gMeme.lines[gMeme.selectedLineIdx].pos.y += 10;
+    const line = getLineSelected();
+    if (btn === '↑') line.pos.y -= 10;
+    else line.pos.y += 10;
 }
+
 
 function getImgId() {
     return gMeme.selectedImgId;
 }
 
 
-function getLine() {
+function getLineSelected() {
     return gMeme.lines[gMeme.selectedLineIdx];
+}
+
+
+function getLines() {
+    return gMeme.lines;
+}
+
+
+function getLineSelectedIdx() {
+    return gMeme.selectedLineIdx;
+}
+
+
+function switchLine() {
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
+    else gMeme.selectedLineIdx += 1;    
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
 }
