@@ -62,6 +62,32 @@ function selectImg(imgId) {
 }
 
 
+function addLine() {
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    gMeme.lines.push(
+        {
+        txt: 'ENTER TEXT HERE',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        pos: {
+            x: gElCanvas.width/2,
+            y: 200
+        },
+        isSelected: true 
+    }
+    )
+    gMeme.selectedLineIdx = gMeme.lines.length-1;
+}
+
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    gMeme.selectedLineIdx = 0;
+    gMeme.lines[0].isSelected = true;
+}
+
+
 function addText(text) {
     gMeme.lines[gMeme.selectedLineIdx].txt = text;
 }

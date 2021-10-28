@@ -28,10 +28,10 @@ function drawImg() {
 
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    const line = getLineSelected()
-    if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
+    // const line = getLineSelected()
     return getLines().map(line => {
       drawText(line.txt, line.pos.x, line.pos.y, line.align, line.color, line.size);
+      if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
     })
 
   };
@@ -52,6 +52,19 @@ function drawText(text, x, y, align, color, size) {
   gCtx.font = `${size}px Impact`;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
+}
+
+
+function onAddLine() {
+  addLine();
+  changeInputText();
+  drawImg();
+}
+
+
+function onDeleteLine() {
+  deleteLine();
+  drawImg();
 }
 
 
@@ -76,18 +89,22 @@ function onChangeLinePos(btn) {
 
 function onSwitchLine() {
   switchLine();
-  const text = getLineSelected().txt
-  document.querySelector('.text-entered').value = text;
-  drawImg()
+  changeInputText();
+  drawImg();
 }
 
 
 function drawRect(x, y) {
   const line = getLineSelected()
   gCtx.beginPath();
-  gCtx.rect(x, y, gElCanvas.width - 20, line.size+10);
+  gCtx.rect(x, y, gElCanvas.width - 20, line.size + 10);
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = 'grey';
   gCtx.stroke();
 }
 
+
+function changeInputText() {
+  const text = getLineSelected().txt;
+  document.querySelector('.text-entered').value = text;
+}
