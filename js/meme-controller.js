@@ -28,7 +28,6 @@ function drawImg() {
 
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    // const line = getLineSelected()
     return getLines().map(line => {
       drawText(line.txt, line.pos.x, line.pos.y, line.align, line.color, line.size);
       if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
@@ -39,7 +38,10 @@ function drawImg() {
 
 
 function onSelectImg(imgId) {
+  const elEditor = document.querySelector('.editor');
+  elEditor.hidden = false;
   selectImg(imgId);
+  changeInputText();
   drawImg();
 }
 
@@ -107,4 +109,10 @@ function drawRect(x, y) {
 function changeInputText() {
   const text = getLineSelected().txt;
   document.querySelector('.text-entered').value = text;
+}
+
+
+function onCloseEditor() {
+  const elEditor = document.querySelector('.editor');
+  elEditor.hidden = true;
 }

@@ -59,6 +59,9 @@ function getImgsForDisplay() {
 
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;
+    gMeme.lines.forEach(line => {
+        line.txt = 'ENTER TEXT HERE';
+    })
 }
 
 
@@ -108,6 +111,14 @@ function changeLinePos(btn) {
 }
 
 
+function switchLine() {
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
+    else gMeme.selectedLineIdx += 1;    
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+}
+
+
 function getImgId() {
     return gMeme.selectedImgId;
 }
@@ -127,10 +138,3 @@ function getLineSelectedIdx() {
     return gMeme.selectedLineIdx;
 }
 
-
-function switchLine() {
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
-    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
-    else gMeme.selectedLineIdx += 1;    
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
-}
