@@ -44,6 +44,7 @@ function onSelectImg(imgId) {
   resizeCanvas();
   selectImg(imgId);
   defaultLine();
+  changeInputText();
   drawImg();
 }
 
