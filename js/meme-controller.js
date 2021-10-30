@@ -28,7 +28,7 @@ function drawImg() {
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     return getLines().map(line => {
-      drawText(line.txt, gElCanvas.width/2, line.pos.y, line.align, line.font, line.color, line.size);
+      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.font, line.color, line.size);
       if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
     })
 

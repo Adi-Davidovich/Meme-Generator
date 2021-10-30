@@ -32,7 +32,7 @@ var gMeme = {
             font: 'Impact',
             color: 'white',
             pos: {
-                x: 250,
+                x: getCanvasSize() / 2,
                 y: 50
             },
             isSelected: true
@@ -65,7 +65,7 @@ function addLine() {
         font: 'Impact',
         color: 'white',
         pos: {
-            x: gElCanvas.width / 2,
+            x: getCanvasSize() / 2,
             y: gMeme.lines.length === 1 ? gElCanvas.height - 20 : gElCanvas.height / 2
         },
         isSelected: true
@@ -118,15 +118,15 @@ function switchLine() {
 function changeTxtAlign(align) {
     const line = getLineSelected();
     if (align === 'l') {
-        line.pos.x = 22;
+        line.pos.x = 20;
         line.align = 'left';
     }
     else if (align === 'c') {
-        line.pos.x = gElCanvas.width / 2;
+        line.pos.x = getCanvasSize() / 2;
         line.align = 'center';
     }
     else if (align = 'r') {
-        line.pos.x = gElCanvas.width - 22;
+        line.pos.x = getCanvasSize() - 20;
         line.align = 'right';
     }
 }
@@ -187,7 +187,7 @@ function defaultLine() {
         color: 'white',
         pos:
         {
-            x: gElCanvas.width / 2,
+            x: getCanvasSize() / 2,
             y: 50
         },
         isSelected: true
