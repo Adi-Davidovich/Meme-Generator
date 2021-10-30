@@ -8,6 +8,7 @@ function onInit() {
   gCtx = gElCanvas.getContext('2d');
   drawImg();
   renderImgs();
+
 }
 
 
@@ -27,7 +28,7 @@ function drawImg() {
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     return getLines().map(line => {
-      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.color, line.size);
+      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.font, line.color, line.size);
       if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
     })
 
@@ -37,19 +38,22 @@ function drawImg() {
 
 function onSelectImg(imgId) {
   const elEditor = document.querySelector('.editor');
-  elEditor.hidden = false;
+  elEditor.style.display = 'flex';
+  const elGallery = document.querySelector('.gallery');
+  elGallery.style.display = 'none';
+  resizeCanvas();
   selectImg(imgId);
-  changeInputText();
+  defaultLine();
   drawImg();
 }
 
 
-function drawText(text, x, y, align, color, size) {
+function drawText(text, x, y, align, font, color, size) {
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = 'black';
   gCtx.textAlign = align;
   gCtx.fillStyle = color;
-  gCtx.font = `${size}px Impact`;
+  gCtx.font = `${size}px ${font}`;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
 }
@@ -94,10 +98,39 @@ function onSwitchLine() {
 }
 
 
+function onChangeTxtAlign(align) {
+  changeTxtAlign(align);
+  drawImg();
+}
+
+
+function onChangeFont(elSelect) {
+  const option = elSelect.value;
+  changeFont(option);
+  drawImg();
+}
+
+
+function onChangeTxtColor(elColor) {
+  const color = elColor.value;
+  changeColor(color);
+  drawImg();
+}
+
+
+function downloadCanvas(elLink) {
+  const data = gElCanvas.toDataURL();
+  elLink.href = data;
+  elLink.download = 'my-meme';
+}
+
+
 function drawRect(x, y) {
-  const line = getLineSelected()
+  const text = getLineSelected().txt;
+  let metrics = gCtx.measureText(text);
+  let fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
   gCtx.beginPath();
-  gCtx.rect(x, y, gElCanvas.width - 20, line.size + 10);
+  gCtx.rect(x, y, gElCanvas.width - 20, fontHeight);
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = 'grey';
   gCtx.stroke();
@@ -110,7 +143,22 @@ function changeInputText() {
 }
 
 
+function resizeCanvas() {
+  const elContainer = document.querySelector('.canvas-container');
+  gElCanvas.width = elContainer.offsetWidth;
+  gElCanvas.height = elContainer.offsetHeight;
+}
+
+
 function onCloseEditor() {
   const elEditor = document.querySelector('.editor');
-  elEditor.hidden = true;
+  elEditor.style.display = 'none';
+  const elGallery = document.querySelector('.gallery');
+  elGallery.style.display = 'block';
+  clearCanvas();
+}
+
+
+function clearCanvas() {
+  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 }

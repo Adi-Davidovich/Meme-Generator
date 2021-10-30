@@ -29,9 +29,10 @@ var gMeme = {
             txt: 'ENTER TEXT HERE',
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white',
             pos: {
-                x: 200,
+                x: 250,
                 y: 50
             },
             isSelected: true
@@ -40,10 +41,11 @@ var gMeme = {
             txt: 'ENTER TEXT HERE',
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white',
             pos: {
-                x: 200,
-                y: 380
+                x: 250,
+                y: 480
             },
             isSelected: false
         }
@@ -59,9 +61,6 @@ function getImgsForDisplay() {
 
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;
-    gMeme.lines.forEach(line => {
-        line.txt = 'ENTER TEXT HERE';
-    })
     if (gMeme.lines.length > 2) {
         gMeme.lines.splice(2);
         gMeme.selectedLineIdx = 0;
@@ -77,10 +76,11 @@ function addLine() {
             txt: 'ENTER TEXT HERE',
             size: 40,
             align: 'center',
+            font: 'Impact',
             color: 'white',
             pos: {
                 x: gElCanvas.width / 2,
-                y: 200
+                y: gElCanvas.height / 2
             },
             isSelected: true
         }
@@ -123,6 +123,40 @@ function switchLine() {
 }
 
 
+function changeTxtAlign(align) {
+    const line = getLineSelected();
+    if (align === 'l') {
+        line.pos.x = 22;
+        line.align = 'left';
+    }
+    else if (align === 'c') {
+        line.pos.x = gElCanvas.width / 2;
+        line.align = 'center';
+    }
+    else if (align = 'r') {
+        line.pos.x = gElCanvas.width - 22;
+        line.align = 'right';
+    }
+}
+
+
+function changeFont(option) {
+    const line = getLineSelected();
+    if (option === 'impact') {
+        line.font = 'Impact';
+    }
+    else if (option === 'arial') {
+        line.font = 'Arial';
+    }
+}
+
+
+function changeColor(color) {
+    const line = getLineSelected();
+    line.color = color;
+}
+
+
 function getImgId() {
     return gMeme.selectedImgId;
 }
@@ -142,3 +176,30 @@ function getLineSelectedIdx() {
     return gMeme.selectedLineIdx;
 }
 
+
+function _setLineAlign() {
+    const lines = gMeme.lines;
+    lines.forEach(line => {
+        line.align = 'center';
+        line.pos.x = 250;
+    })
+}
+
+
+function defaultLine() {
+    const dl = {
+        txt: 'ENTER TEXT HERE',
+        size: 40,
+        align: 'center',
+        font: 'Impact',
+        color: 'white',
+    };
+    const lines = gMeme.lines;
+    lines.forEach(line => {
+        Object.assign(line, dl);
+    })
+    lines[0].pos.y = 50;
+    lines[0].isSelected = true;
+    lines[1].pos.y = 480;
+    lines[1].isSelected = false;
+}

@@ -10,7 +10,7 @@
 </head>
 
 <body onload="onInit()">
-
+    <div class="main-screen" onclick="toggleMenu()"></div>
     <header class="main-header">
         <div class="header-container main-layout flex space-between align-center">
             <div class="logo">Meme Generator</div>
@@ -18,6 +18,7 @@
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">My Memes</a></li>
             </ul>
+            <button class="btn-menu" onclick="toggleMenu()">☰</button>
         </div>
     </header>
 
@@ -27,20 +28,40 @@
             <div class="images-container grid"></div>
         </div>
 
-        <div class="editor main-layout" hidden>
+        <div class="editor main-layout d-none">
             <section class="canvas-container">
-                <canvas width="400" height="400" style="outline:1px solid black"></canvas>
+                <canvas style="outline:1px solid black"></canvas>
             </section>
-            <section class="edit-board">
+            <section class="edit-board flex align-center content-center">
                 <button class="close-editor" onclick="onCloseEditor()">Back to gallery</button>
-                <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()" /><br>
-                <button class="add-line" onclick="onAddLine()">add</button>
-                <button class="delete-line" onclick="onDeleteLine()">delete</button>
-                <button class="text-size" onclick="onChangeTxtSize(this)">-</button>
-                <button class="text-size" onclick="onChangeTxtSize(this)">+</button>
-                <button class="text-position" onclick="onChangeLinePos(this)">↑</button>
-                <button class="text-position" onclick="onChangeLinePos(this)">↓</button>
-                <button class="switch-line" onclick="onSwitchLine()">↕</button>
+                <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()" />
+                <div>
+                    <button class="add-line" onclick="onAddLine()">add</button>
+                    <button class="delete-line" onclick="onDeleteLine()">delete</button>
+                    <button class="switch-line" onclick="onSwitchLine()">↕</button>
+                </div>
+                <div>
+                    <button class="text-position" onclick="onChangeLinePos(this)">↑</button>
+                    <button class="text-position" onclick="onChangeLinePos(this)">↓</button>
+                </div>
+                <div>
+                    <button class="text-size" onclick="onChangeTxtSize(this)">-</button>
+                    <button class="text-size" onclick="onChangeTxtSize(this)">+</button>
+                    <button class="text-align" onclick="onChangeTxtAlign('l')">left</button>
+                    <button class="text-align" onclick="onChangeTxtAlign('c')">center</button>
+                    <button class="text-align" onclick="onChangeTxtAlign('r')">right</button>
+                </div>
+                <div>
+                    <select name="fonts" onchange="onChangeFont(this)">
+                        <option value="impact">Impact</option>
+                        <option value="arial">arial</option>
+                    </select>
+                    <input type="color" id="txt-color" class="txt-color" onchange="onChangeTxtColor(this)"/>
+                </div>
+                <div>
+                    <a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+                </div>
+                
             </section>
         </div>
     </main>
@@ -54,7 +75,7 @@
 
 
 
-
+    <script src="js/main.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
