@@ -93,16 +93,16 @@ function addText(text) {
 }
 
 
-function changeTxtSize(btn) {
+function changeTxtSize(size) {
     const line = getLineSelected();
-    if (btn === '-') line.size -= 1;
+    if (size === 'small') line.size -= 1;
     else line.size += 1;
 }
 
 
-function changeLinePos(btn) {
+function changeLinePos(position) {
     const line = getLineSelected();
-    if (btn === '↑') line.pos.y -= 10;
+    if (position === 'up') line.pos.y -= 10;
     else line.pos.y += 10;
 }
 

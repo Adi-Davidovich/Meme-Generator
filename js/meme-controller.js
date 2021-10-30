@@ -87,14 +87,14 @@ function onAddText() {
 }
 
 
-function onChangeTxtSize(btn) {
-  changeTxtSize(btn.innerHTML);
+function onChangeTxtSize(size) {
+  changeTxtSize(size);
   drawImg();
 }
 
 
-function onChangeLinePos(btn) {
-  changeLinePos(btn.innerHTML);
+function onChangeLinePos(position) {
+  changeLinePos(position);
   drawImg();
 }
 
