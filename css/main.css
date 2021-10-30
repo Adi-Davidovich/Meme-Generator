@@ -19,19 +19,7 @@
   font-style: normal;
 }
 
-/*----------  Font Awesome  ----------*/
-@font-face {
-  font-family: "fontawesome";
-  src: url("../fonts/fa/fa-brands-400.ttf");
-  src: url("../fonts/fontawesome/fontawesome-webfont.eot")
-      format("embedded-opentype"),
-    url("../fonts/fontawesome/fontawesome-webfont.woff2") format("woff2"),
-    url("../fonts/fontawesome/fontawesome-webfont.woff") format("woff"),
-    url("../fonts/fontawesome/fontawesome-webfont.ttf") format("truetype"),
-    url("../fonts/fontawesome/fontawesome-webfont.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 /* BASICS */
 
@@ -45,9 +33,10 @@ body {
 }
 
 footer {
-  background: #40704c;
+  background: #000000;
   padding: 3rem 0;
   text-align: center;
+  color: #fff;
 }
 
 a {
@@ -135,13 +124,21 @@ img {
 /* MAIN HEADER */
 
 .main-header {
-  height: 4.125rem;
-  background-color: #40704c;
+  height: 5.725rem;
+  background-color: #000000;
   position: fixed;
   width: 100%;
 }
 
 .header-container {
+  height: 100%;
+}
+
+.logo {
+  background: url("../img/61QgHx4VnGL.png");
+  background-position: center center;
+  background-size: cover;
+  width: 10rem;
   height: 100%;
 }
 
@@ -159,7 +156,7 @@ img {
 }
 
 .main-nav li:hover > a {
-  color: #3b4457;
+  color: #e7885f;
 }
 
 @media (max-width: 840px) {
@@ -198,7 +195,7 @@ img {
 /* MAIN CONTENT */
 
 .main-content {
-  padding: 100px 0;
+  padding: 120px 0 100px;
 }
 
 /* gallery */
@@ -229,7 +226,6 @@ img {
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 5px 5px 8px 0px #00000030;
-  
 }
 
 .canvas-container {
@@ -241,6 +237,30 @@ img {
 .edit-board {
   flex-direction: column;
   flex-grow: 1;
+  gap: 10px;
+}
+
+.btn {
+  color: black;
+  background-color: transparent;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 7px;
+  border: 1px solid black;
+  margin-inline-end: 3px;
+  font-size: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+a.btn {
+  color: black;
 }
 
 @media (max-width: 840px) {

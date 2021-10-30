@@ -6,14 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <title>Meme Generator</title>
 </head>
 
 <body onload="onInit()">
+    
     <div class="main-screen" onclick="closeMenu()"></div>
     <header class="main-header">
         <div class="header-container main-layout flex space-between align-center">
-            <div class="logo">Meme Generator</div>
+            <div class="logo"></div>
             <ul class="main-nav clean-list flex">
                 <li><a href="#" onclick="closeMenu()">Gallery</a></li>
                 <li><a href="#" onclick="closeMenu()">My Memes</a></li>
@@ -33,23 +37,25 @@
                 <canvas style="outline:1px solid black"></canvas>
             </section>
             <section class="edit-board flex align-center content-center">
-                <button class="close-editor" onclick="onCloseEditor()">Back to gallery</button>
+                <div>
+                    <a href="#" class="btn" onclick="onCloseEditor()">Back to gallery</a>
+                </div>
                 <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()" />
                 <div>
-                    <button class="add-line" onclick="onAddLine()">add</button>
-                    <button class="delete-line" onclick="onDeleteLine()">delete</button>
-                    <button class="switch-line" onclick="onSwitchLine()">↕</button>
+                    <button class="btn" onclick="onAddLine()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onDeleteLine()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onSwitchLine()"><i class="fa fa-arrows-v" aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button class="text-position" onclick="onChangeLinePos(this)">↑</button>
-                    <button class="text-position" onclick="onChangeLinePos(this)">↓</button>
+                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button class="text-size" onclick="onChangeTxtSize(this)">-</button>
-                    <button class="text-size" onclick="onChangeTxtSize(this)">+</button>
-                    <button class="text-align" onclick="onChangeTxtAlign('l')">left</button>
-                    <button class="text-align" onclick="onChangeTxtAlign('c')">center</button>
-                    <button class="text-align" onclick="onChangeTxtAlign('r')">right</button>
+                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-compress" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-expand" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtAlign('l')"><i class="fa fa-align-left" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtAlign('c')"><i class="fa fa-align-center" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtAlign('r')"><i class="fa fa-align-right" aria-hidden="true"></i></button>
                 </div>
                 <div>
                     <select name="fonts" onchange="onChangeFont(this)">
@@ -59,7 +65,7 @@
                     <input type="color" id="txt-color" class="txt-color" onchange="onChangeTxtColor(this)"/>
                 </div>
                 <div>
-                    <a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+                    <a href="#" class="btn" onclick="downloadCanvas(this)" download="myphoto">Download</a>
                 </div>
                 
             </section>
@@ -68,7 +74,7 @@
 
     <footer class="main-footer">
         <div class="footer-container main-layout flex align-center content-center">
-            <h3>created by Adi Davidovich</h3>
+            <div>created by Adi Davidovich</div>
         </div>
     </footer>
 
