@@ -12,22 +12,22 @@
 <body onload="onInit()">
 
     <header class="main-header">
-        <div class="header-container">
+        <div class="header-container main-layout flex space-between align-center">
             <div class="logo">Meme Generator</div>
-            <ul class="main-nav">
+            <ul class="main-nav clean-list flex">
                 <li><a href="#">Gallery</a></li>
                 <li><a href="#">My Memes</a></li>
             </ul>
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content main-layout">
         <div class="gallery">
             <input class="search-gallery" type="search" placeholder="Search" />
             <div class="images-container grid"></div>
         </div>
 
-        <div class="editor" hidden>
+        <div class="editor main-layout" hidden>
             <section class="canvas-container">
                 <canvas width="400" height="400" style="outline:1px solid black"></canvas>
             </section>
@@ -44,6 +44,12 @@
             </section>
         </div>
     </main>
+
+    <footer class="main-footer">
+        <div class="footer-container main-layout flex align-center content-center">
+            <h3>created by Adi Davidovich</h3>
+        </div>
+    </footer>
 
 
 
