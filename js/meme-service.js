@@ -1,24 +1,24 @@
 'use strict'
 
 var gImgs = [
-    { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['happy'] },
+    { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['happy', 'animal', 'dog', 'cute', 'two'] },
     { id: 2, url: './meme-imgs (square)/2.jpg', keywords: ['trump', 'fake news'] },
-    { id: 3, url: './meme-imgs (square)/3.jpg', keywords: ['sleep'] },
-    { id: 4, url: './meme-imgs (square)/4.jpg', keywords: ['cat', 'meow', 'animal'] },
+    { id: 3, url: './meme-imgs (square)/3.jpg', keywords: ['sleep', 'animal', 'dog', 'cute', 'two'] },
+    { id: 4, url: './meme-imgs (square)/4.jpg', keywords: ['cat', 'meow', 'animal', 'sleep'] },
     { id: 5, url: './meme-imgs (square)/5.jpg', keywords: ['success', 'baby'] },
-    { id: 6, url: './meme-imgs (square)/6.jpg', keywords: ['aliens'] },
-    { id: 7, url: './meme-imgs (square)/7.jpg', keywords: [''] },
-    { id: 8, url: './meme-imgs (square)/8.jpg', keywords: [''] },
-    { id: 9, url: './meme-imgs (square)/9.jpg', keywords: [''] },
-    { id: 10, url: './meme-imgs (square)/10.jpg', keywords: [''] },
-    { id: 11, url: './meme-imgs (square)/11.jpg', keywords: [''] },
-    { id: 12, url: './meme-imgs (square)/12.jpg', keywords: [''] },
-    { id: 13, url: './meme-imgs (square)/13.jpg', keywords: [''] },
-    { id: 14, url: './meme-imgs (square)/14.jpg', keywords: [''] },
-    { id: 15, url: './meme-imgs (square)/15.jpg', keywords: [''] },
-    { id: 16, url: './meme-imgs (square)/16.jpg', keywords: [''] },
-    { id: 17, url: './meme-imgs (square)/17.jpg', keywords: [''] },
-    { id: 18, url: './meme-imgs (square)/18.jpg', keywords: [''] }
+    { id: 6, url: './meme-imgs (square)/6.jpg', keywords: ['aliens', 'big', 'huge'] },
+    { id: 7, url: './meme-imgs (square)/7.jpg', keywords: ['surprise', 'baby', 'cute', 'funny'] },
+    { id: 8, url: './meme-imgs (square)/8.jpg', keywords: ['thinking'] },
+    { id: 9, url: './meme-imgs (square)/9.jpg', keywords: ['baby', 'laugh'] },
+    { id: 10, url: './meme-imgs (square)/10.jpg', keywords: ['obama', 'laugh'] },
+    { id: 11, url: './meme-imgs (square)/11.jpg', keywords: ['kiss', 'fight', 'two'] },
+    { id: 12, url: './meme-imgs (square)/12.jpg', keywords: ['zadik', 'know', 'right'] },
+    { id: 13, url: './meme-imgs (square)/13.jpg', keywords: ['cheers', 'congratulations', 'leonardo', 'dicaprio'] },
+    { id: 14, url: './meme-imgs (square)/14.jpg', keywords: ['sunglasses', 'matrix'] },
+    { id: 15, url: './meme-imgs (square)/15.jpg', keywords: ['little', 'small', 'know'] },
+    { id: 16, url: './meme-imgs (square)/16.jpg', keywords: ['star', 'wars', 'laugh', 'embarrassed'] },
+    { id: 17, url: './meme-imgs (square)/17.jpg', keywords: ['putin', 'two'] },
+    { id: 18, url: './meme-imgs (square)/18.jpg', keywords: ['toy', 'story', 'all', 'one', 'day'] }
 ]
 
 var gMeme = {
