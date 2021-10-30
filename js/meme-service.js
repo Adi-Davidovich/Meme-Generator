@@ -4,7 +4,7 @@ var gImgs = [
     { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['happy'] },
     { id: 2, url: './meme-imgs (square)/2.jpg', keywords: ['trump', 'fake news'] },
     { id: 3, url: './meme-imgs (square)/3.jpg', keywords: ['sleep'] },
-    { id: 4, url: './meme-imgs (square)/4.jpg', keywords: ['cat', 'meow'] },
+    { id: 4, url: './meme-imgs (square)/4.jpg', keywords: ['cat', 'meow', 'animal'] },
     { id: 5, url: './meme-imgs (square)/5.jpg', keywords: ['success', 'baby'] },
     { id: 6, url: './meme-imgs (square)/6.jpg', keywords: ['aliens'] },
     { id: 7, url: './meme-imgs (square)/7.jpg', keywords: [''] },
@@ -36,20 +36,7 @@ var gMeme = {
                 y: 50
             },
             isSelected: true
-        },
-        {
-            txt: 'ENTER TEXT HERE',
-            size: 40,
-            align: 'center',
-            font: 'Impact',
-            color: 'white',
-            pos: {
-                x: 250,
-                y: 480
-            },
-            isSelected: false
         }
-
     ]
 }
 
@@ -61,8 +48,8 @@ function getImgsForDisplay() {
 
 function selectImg(imgId) {
     gMeme.selectedImgId = imgId;
-    if (gMeme.lines.length > 2) {
-        gMeme.lines.splice(2);
+    if (gMeme.lines.length > 1) {
+        gMeme.lines.splice(1);
         gMeme.selectedLineIdx = 0;
         gMeme.lines[0].isSelected = true;
     }
@@ -71,21 +58,26 @@ function selectImg(imgId) {
 
 function addLine() {
     gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
-    gMeme.lines.push(
-        {
-            txt: 'ENTER TEXT HERE',
-            size: 40,
-            align: 'center',
-            font: 'Impact',
-            color: 'white',
-            pos: {
-                x: gElCanvas.width / 2,
-                y: gElCanvas.height / 2
-            },
-            isSelected: true
-        }
-    )
+    const line = {
+        txt: 'ENTER TEXT HERE',
+        size: 40,
+        align: 'center',
+        font: 'Impact',
+        color: 'white',
+        pos: {
+            x: gElCanvas.width / 2,
+            y: gMeme.lines.length === 1 ? gElCanvas.height - 20 : gElCanvas.height / 2
+        },
+        isSelected: true
+    }
+    gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
+}
+
+
+function searchImg(searchValue) {
+    return gImgs.filter(img => img.keywords.some(keyword => keyword.startsWith(searchValue)));
+
 }
 
 
@@ -193,13 +185,12 @@ function defaultLine() {
         align: 'center',
         font: 'Impact',
         color: 'white',
+        pos:
+        {
+            x: gElCanvas.width / 2,
+            y: 50
+        },
+        isSelected: true
     };
-    const lines = gMeme.lines;
-    lines.forEach(line => {
-        Object.assign(line, dl);
-    })
-    lines[0].pos.y = 50;
-    lines[0].isSelected = true;
-    lines[1].pos.y = 480;
-    lines[1].isSelected = false;
+    gMeme.lines = [dl];
 }

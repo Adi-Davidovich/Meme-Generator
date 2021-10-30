@@ -12,10 +12,10 @@ function onInit() {
 }
 
 
-function renderImgs() {
+function renderImgs(imageList = getImgsForDisplay()) {
   let elImagesContainer = document.querySelector(".images-container");
-  let images = getImgsForDisplay();
-  images.forEach(img => {
+  elImagesContainer.innerHTML = '';
+  imageList.forEach(img => {
     elImagesContainer.innerHTML += `<img class="img img-${img.id}" onclick="onSelectImg(${img.id})" src="${img.url}"/>`
   });
 }
@@ -28,7 +28,7 @@ function drawImg() {
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
     return getLines().map(line => {
-      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.font, line.color, line.size);
+      drawText(line.txt, gElCanvas.width/2, line.pos.y, line.align, line.font, line.color, line.size);
       if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
     })
 
@@ -57,6 +57,13 @@ function drawText(text, x, y, align, font, color, size) {
   gCtx.font = `${size}px ${font}`;
   gCtx.fillText(text, x, y);
   gCtx.strokeText(text, x, y);
+}
+
+
+function onSearchImg(e) {
+  const searchValue = e.target.value;
+  const filteredList = searchImg(searchValue);
+  renderImgs(filteredList);
 }
 
 

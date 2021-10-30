@@ -13,7 +13,7 @@
 </head>
 
 <body onload="onInit()">
-    
+
     <div class="main-screen" onclick="closeMenu()"></div>
     <header class="main-header">
         <div class="header-container main-layout flex space-between align-center">
@@ -22,13 +22,13 @@
                 <li><a href="#" onclick="closeMenu()">Gallery</a></li>
                 <li><a href="#" onclick="closeMenu()">My Memes</a></li>
             </ul>
-            <button class="btn-menu" onclick="openMenu()">☰</button>
+            <button class="btn-menu" onclick="openMenu()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></button>
         </div>
     </header>
 
     <main class="main-content main-layout">
         <div class="gallery">
-            <input class="search-gallery" type="search" placeholder="Search" />
+            <input class="search-gallery" type="search" placeholder="Search" oninput="onSearchImg(event)"/>
             <div class="images-container grid"></div>
         </div>
 
@@ -37,37 +37,45 @@
                 <canvas style="outline:1px solid black"></canvas>
             </section>
             <section class="edit-board flex align-center content-center">
-                <div>
-                    <a href="#" class="btn" onclick="onCloseEditor()">Back to gallery</a>
-                </div>
                 <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()" />
                 <div>
                     <button class="btn" onclick="onAddLine()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                     <button class="btn" onclick="onDeleteLine()"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onSwitchLine()"><i class="fa fa-arrows-v" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onSwitchLine()"><i class="fa fa-arrows-v"
+                            aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-up"
+                            aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeLinePos(this)"><i class="fa fa-arrow-down"
+                            aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-compress" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-expand" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onChangeTxtAlign('l')"><i class="fa fa-align-left" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onChangeTxtAlign('c')"><i class="fa fa-align-center" aria-hidden="true"></i></button>
-                    <button class="btn" onclick="onChangeTxtAlign('r')"><i class="fa fa-align-right" aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-font" style="font-size: 0.8rem;"
+                            aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtSize(this)"><i class="fa fa-font"
+                            aria-hidden="true"></i></button>
+                </div>
+                <div>
+                    <button class="btn" onclick="onChangeTxtAlign('l')"><i class="fa fa-align-left"
+                            aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtAlign('c')"><i class="fa fa-align-center"
+                            aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtAlign('r')"><i class="fa fa-align-right"
+                            aria-hidden="true"></i></button>
                 </div>
                 <div>
                     <select name="fonts" onchange="onChangeFont(this)">
                         <option value="impact">Impact</option>
                         <option value="arial">arial</option>
                     </select>
-                    <input type="color" id="txt-color" class="txt-color" onchange="onChangeTxtColor(this)"/>
+                    <input type="color" id="txt-color" class="txt-color" onchange="onChangeTxtColor(this)" />
                 </div>
-                <div>
+                <div class="editor-btn">
                     <a href="#" class="btn" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+                    <a href="#" class="btn" onclick="onCloseEditor()">Back to gallery</a>
                 </div>
-                
+
             </section>
         </div>
     </main>
