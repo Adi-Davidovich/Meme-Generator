@@ -19,16 +19,16 @@
         <div class="header-container main-layout flex space-between align-center">
             <div class="logo"></div>
             <ul class="main-nav clean-list flex">
-                <li><a href="#" onclick="closeMenu()">Gallery</a></li>
-                <li><a href="#" onclick="closeMenu()">My Memes</a></li>
+                <li><a href="#" onclick="onShowPage('gallery')">Gallery</a></li>
+                <li><a href="#" onclick="onShowPage('savedMemes')">My Memes</a></li>
             </ul>
-            <button class="btn-menu" onclick="openMenu()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></button>
+            <button class="btn-menu" onclick="onOpenMenu()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></button>
         </div>
     </header>
 
     <main class="main-content main-layout">
         <div class="gallery">
-            <input class="search-gallery" type="search" placeholder="Search" oninput="onSearchImg(event)"/>
+            <input class="search-gallery" type="search" placeholder="Search" oninput="onSearchImg(this.value)"/>
             <div class="images-container grid"></div>
         </div>
 
@@ -37,7 +37,7 @@
                 <canvas style="outline:1px solid black"></canvas>
             </section>
             <section class="edit-board flex align-center content-center">
-                <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText()" />
+                <input class="text-entered" type="text" placeholder="Enter text here" oninput="onAddText(this.value)" />
                 <div>
                     <button class="btn" onclick="onAddLine()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                     <button class="btn" onclick="onDeleteLine()"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -65,18 +65,23 @@
                             aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <select name="fonts" onchange="onChangeFont(this)">
-                        <option value="impact">Impact</option>
-                        <option value="arial">arial</option>
+                    <select name="fonts" onchange="onChangeFont(this.value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
                     </select>
                     <input type="color" id="txt-color" class="txt-color" onchange="onChangeTxtColor(this)" />
                 </div>
                 <div class="editor-btn">
-                    <a href="#" class="btn btn-2" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+                    <a href="#" class="btn btn-2" onclick="onSaveMeme()">Save</a>
+                    <a href="#" class="btn btn-2" onclick="onDownloadCanvas(this)" download="myphoto">Download</a>
                     <a href="#" class="btn btn-2" onclick="onCloseEditor()">Back to gallery</a>
                 </div>
 
             </section>
+        </div>
+
+        <div class="saved-memes main-layout d-none">
+            <div class="memes-container grid"></div>
         </div>
     </main>
 
@@ -86,11 +91,11 @@
         </div>
     </footer>
 
-
-
-
     <script src="js/main.js"></script>
+    <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
+    <script src="js/saved-memes-service.js"></script>
+    <script src="js/saved-memes-controller.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
 
