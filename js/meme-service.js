@@ -57,7 +57,7 @@ function selectImg(imgId) {
 
 
 function addLine() {
-    if (gMeme.lines.length > 1) getLineSelected().isSelected = false;
+    if (gMeme.lines.length >= 1) getLineSelected().isSelected = false;
     const line = {
         txt: 'ENTER TEXT HERE',
         size: 40,
