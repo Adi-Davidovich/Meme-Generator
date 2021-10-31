@@ -2,6 +2,7 @@
 
 var gElCanvas;
 var gCtx;
+var gSelectedImgUrl;
 
 function onInit() {
   gElCanvas = document.querySelector('canvas');
@@ -20,21 +21,6 @@ function renderImgs(imageList = getImgsForDisplay()) {
 }
 
 
-function drawImg() {
-  var img = new Image();
-  img.src = `./meme-imgs (square)/${getImgId()}.jpg`;
-
-  img.onload = () => {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    return getLines().map(line => {
-      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.font, line.color, line.size);
-      if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
-    })
-
-  };
-}
-
-
 function onSelectImg(imgId) {
   const elEditor = document.querySelector('.editor');
   elEditor.style.display = 'flex';
@@ -43,8 +29,29 @@ function onSelectImg(imgId) {
   resizeCanvas();
   selectImg(imgId);
   defaultLine();
-  changeInputText();
+  _setFont();
+  _clearInputTxt();
+  renderImg();
+}
+
+
+function renderImg(){
   drawImg();
+}
+
+
+function drawImg() {
+  var img = new Image();
+  img.src = `./meme-imgs (square)/${getImgId()}.jpg`;
+  gSelectedImgUrl = img.src;
+  img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+    return getLines().map(line => {
+      drawText(line.txt, line.pos.x, line.pos.y, line.align, line.font, line.color, line.size);
+      if (line.isSelected) drawRect(0 + 10, line.pos.y - 40);
+    })
+
+  };
 }
 
 
@@ -59,8 +66,7 @@ function drawText(text, x, y, align, font, color, size) {
 }
 
 
-function onSearchImg(e) {
-  const searchValue = e.target.value;
+function onSearchImg(searchValue) {
   const filteredList = searchImg(searchValue);
   renderImgs(filteredList);
 }
@@ -68,64 +74,62 @@ function onSearchImg(e) {
 
 function onAddLine() {
   addLine();
-  changeInputText();
-  drawImg();
+  _clearInputTxt();
+  renderImg();
 }
 
 
 function onDeleteLine() {
   deleteLine();
-  drawImg();
+  renderImg();
 }
 
 
-function onAddText() {
-  const elTextEntered = document.querySelector('.text-entered').value;
-  addText(elTextEntered);
-  drawImg();
+function onAddText(txt) {
+  addText(txt);
+  renderImg();
 }
 
 
 function onChangeTxtSize(size) {
   changeTxtSize(size);
-  drawImg();
+  renderImg();
 }
 
 
 function onChangeLinePos(position) {
   changeLinePos(position);
-  drawImg();
+  renderImg();
 }
 
 
 function onSwitchLine() {
   switchLine();
-  changeInputText();
-  drawImg();
+  document.querySelector('.text-entered').value = getLineSelected().txt;
+  renderImg();
 }
 
 
 function onChangeTxtAlign(align) {
   changeTxtAlign(align);
-  drawImg();
+  renderImg();
 }
 
 
-function onChangeFont(elSelect) {
-  const option = elSelect.value;
-  changeFont(option);
-  drawImg();
+function onChangeFont(font) {
+  changeFont(font);
+  renderImg();
 }
 
 
 function onChangeTxtColor(elColor) {
   const color = elColor.value;
   changeColor(color);
-  drawImg();
+  renderImg();
 }
 
 
-function downloadCanvas(elLink) {
+function onDownloadCanvas(elLink) {
   const data = gElCanvas.toDataURL();
   elLink.href = data;
   elLink.download = 'my-meme';
@@ -144,9 +148,23 @@ function drawRect(x, y) {
 }
 
 
-function changeInputText() {
-  const text = getLineSelected().txt;
-  document.querySelector('.text-entered').value = text;
+function _clearInputTxt() {
+  const txt = getLineSelected().txt;
+  const elInputTxt = document.querySelector('.text-entered');
+  elInputTxt.placeholder = txt;
+  elInputTxt.value = '';
+}
+
+
+function _setFont() {
+  const elSelect = document.querySelector('[name="fonts"]');
+  elSelect.value = 'Impact';
+}
+
+
+function getFont() {
+  const elSelect = document.querySelector('[name="fonts"]');
+  return elSelect.value;
 }
 
 

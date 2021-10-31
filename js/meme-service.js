@@ -62,7 +62,7 @@ function addLine() {
         txt: 'ENTER TEXT HERE',
         size: 40,
         align: 'center',
-        font: 'Impact',
+        font: getFont(),
         color: 'white',
         pos: {
             x: getCanvasSize() / 2,
@@ -88,8 +88,8 @@ function deleteLine() {
 }
 
 
-function addText(text) {
-    getLineSelected().txt = text;
+function addText(txt) {
+    getLineSelected().txt = txt;
 }
 
 
@@ -132,14 +132,9 @@ function changeTxtAlign(align) {
 }
 
 
-function changeFont(option) {
+function changeFont(font) {
     const line = getLineSelected();
-    if (option === 'impact') {
-        line.font = 'Impact';
-    }
-    else if (option === 'arial') {
-        line.font = 'Arial';
-    }
+    line.font = font;
 }
 
 
