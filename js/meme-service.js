@@ -57,7 +57,7 @@ function selectImg(imgId) {
 
 
 function addLine() {
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    if (gMeme.lines.length > 1) getLineSelected().isSelected = false;
     const line = {
         txt: 'ENTER TEXT HERE',
         size: 40,
@@ -84,12 +84,12 @@ function searchImg(searchValue) {
 function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     gMeme.selectedLineIdx = 0;
-    gMeme.lines[0].isSelected = true;
+    if (gMeme.lines.length > 1) gMeme.lines[0].isSelected = true;
 }
 
 
 function addText(text) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = text;
+    getLineSelected().txt = text;
 }
 
 
@@ -108,10 +108,10 @@ function changeLinePos(position) {
 
 
 function switchLine() {
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = false;
+    getLineSelected().isSelected = false;
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
     else gMeme.selectedLineIdx += 1;
-    gMeme.lines[gMeme.selectedLineIdx].isSelected = true;
+    getLineSelected().isSelected = true;
 }
 
 

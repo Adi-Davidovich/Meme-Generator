@@ -206,6 +206,12 @@ img {
   padding: 120px 0 100px;
 }
 
+.search-gallery {
+  height: 2rem;
+  width: 50%;
+  padding-inline-start: 10px;
+}
+
 /* gallery */
 
 .grid {
@@ -261,6 +267,9 @@ img {
     width: 500px;
     height: 500px;
   }
+  .text-entered {
+    margin-inline-start: 10px;
+  }
 }
 
 .edit-board {
@@ -271,7 +280,7 @@ img {
 
 .text-entered {
   margin-block-start: 10px;
-  width: 16rem;
+  width: 19rem;
   height: 2rem;
   padding-inline-start: 5px;
 }
@@ -284,7 +293,7 @@ img {
   border-radius: 7px;
   border: 1px solid black;
   margin-inline-end: 3px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 3rem;
   height: 3rem;
 }
@@ -292,7 +301,7 @@ img {
 .btn:hover {
   background-color: black;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 canvas {
@@ -301,6 +310,10 @@ canvas {
 
 .editor-btn {
 margin-top: 30px;
+}
+
+.btn-2:hover {
+  background-color: #e7885f;
 }
 
 a.btn {
