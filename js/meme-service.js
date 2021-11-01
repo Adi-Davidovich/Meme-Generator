@@ -35,7 +35,8 @@ var gMeme = {
                 x: getCanvasSize() / 2,
                 y: 50
             },
-            isSelected: true
+            isSelected: true,
+            isDrag: false
         }
     ]
 }
@@ -68,7 +69,8 @@ function addLine() {
             x: getCanvasSize() / 2,
             y: gMeme.lines.length === 1 ? gElCanvas.height - 20 : gElCanvas.height / 2
         },
-        isSelected: true
+        isSelected: true,
+        isDrag: false
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
@@ -76,7 +78,7 @@ function addLine() {
 
 
 function searchImg(searchValue) {
-    return gImgs.filter(img => img.keywords.some(keyword => keyword.startsWith(searchValue)));
+    return gImgs.filter(img => img.keywords.some(keyword => keyword.startsWith(searchValue.toLowerCase())));
 
 }
 
@@ -185,7 +187,8 @@ function defaultLine() {
             x: getCanvasSize() / 2,
             y: 50
         },
-        isSelected: true
+        isSelected: true,
+        isDrag: false
     };
     gMeme.lines = [dl];
 }

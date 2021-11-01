@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
     <title>Meme Generator</title>
 </head>
 
@@ -28,7 +26,7 @@
 
     <main class="main-content main-layout">
         <div class="gallery">
-            <input class="search-gallery" type="search" placeholder="Search" oninput="onSearchImg(this.value)"/>
+            <input class="search-gallery" type="search" placeholder="Search" oninput="onSearchImg(this.value)" />
             <div class="images-container grid"></div>
         </div>
 
@@ -51,8 +49,8 @@
                             aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button class="btn" onclick="onChangeTxtSize('small')"><i class="fa fa-font" style="font-size: 0.8rem;"
-                            aria-hidden="true"></i></button>
+                    <button class="btn" onclick="onChangeTxtSize('small')"><i class="fa fa-font"
+                            style="font-size: 0.8rem;" aria-hidden="true"></i></button>
                     <button class="btn" onclick="onChangeTxtSize('large')"><i class="fa fa-font"
                             aria-hidden="true"></i></button>
                 </div>
@@ -96,6 +94,7 @@
     <script src="js/meme-service.js"></script>
     <script src="js/saved-memes-service.js"></script>
     <script src="js/saved-memes-controller.js"></script>
+    <script src="js/meme-drag.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
 

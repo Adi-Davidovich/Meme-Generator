@@ -7,7 +7,9 @@ var gSelectedImgUrl;
 function onInit() {
   gElCanvas = document.querySelector('canvas');
   gCtx = gElCanvas.getContext('2d');
-  drawImg();
+  addMouseListeners();
+  addTouchListeners();
+  renderImg();
   renderImgs();
 }
 
