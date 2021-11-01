@@ -183,7 +183,7 @@ img {
     height: 100vh;
     flex-direction: column;
     padding-block-start: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(225, 209, 221, 0.9);
     width: 200px;
     transform: translateX(100%);
     border-inline-start: 1px solid #e0e0e0;
@@ -195,6 +195,7 @@ img {
   }
   .main-nav li {
     justify-content: flex-start;
+    height: 7rem;
   }
   .main-nav a {
     display: block;
@@ -325,7 +326,7 @@ img {
 .btn:hover {
   background-color: #d75a42d6;
   color: white;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 canvas {
