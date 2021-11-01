@@ -11,7 +11,7 @@ function renderSavedMemes() {
 }
 
 
-function onSaveMeme() {
+function onSaveMeme(elBtn) {
     let img = new Image()
     img.src = gSelectedImgUrl;
     img.onload = () => {
@@ -20,6 +20,8 @@ function onSaveMeme() {
         const data = gElCanvas.toDataURL();
         saveMeme(data);
         renderSavedMemes();
+        elBtn.innerHTML = 'Saved!'
+        setTimeout(()=> elBtn.innerHTML = 'Save',1500);
         return lines;
     }
 }

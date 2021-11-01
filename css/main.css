@@ -31,10 +31,9 @@ body {
 }
 
 footer {
-  background: #202020;
   padding: 3rem 0;
   text-align: center;
-  color: #fff;
+  color: #202020;
 }
 
 a {
@@ -116,6 +115,11 @@ img {
     display: none;
   }
 }
+@media (min-width: 900px) {
+  .main-layout {
+    max-width: 850px;
+  }
+}
 @media (min-width: 1100px) {
   .main-layout {
     max-width: 1080px;
@@ -163,8 +167,12 @@ img {
   color: #e7885f;
 }
 
+.main-nav li > a:focus {
+  color: #eecb18;
+}
+
 .fa-bars {
- width: 2rem;
+  width: 2rem;
 }
 
 @media (max-width: 840px) {
@@ -203,16 +211,28 @@ img {
 /* MAIN CONTENT */
 
 .main-content {
-  padding: 120px 0 100px;
+  padding: 120px 0 60px;
 }
 
 .search-gallery {
   height: 2rem;
   width: 50%;
   padding-inline-start: 10px;
+  border: none;
 }
 
 /* gallery */
+
+.gallery {
+  background: linear-gradient(
+    125deg,
+    rgb(165 17 131 / 50%) 0%,
+    rgb(223 102 55 / 50%) 50%,
+    rgb(230 212 16 / 50%) 100%
+  );
+  padding: 20px;
+  border-radius: 10px;
+}
 
 .grid {
   padding-top: 2rem;
@@ -233,12 +253,15 @@ img {
   border-radius: 5px;
 }
 
+/* editor */
+
 .editor {
   width: 100%;
-  background-color: #e0e0e0;
+  background-color: rgb(164 15 135 / 13%);
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 5px;
   box-shadow: 5px 5px 8px 0px #00000030;
 }
@@ -263,18 +286,19 @@ img {
   .editor {
     flex-direction: row;
   }
+  .text-entered {
+    margin-inline-start: 10px;
+  }
+}
+@media (min-width: 900px) {
   .canvas-container {
     width: 500px;
     height: 500px;
-  }
-  .text-entered {
-    margin-inline-start: 10px;
   }
 }
 
 .edit-board {
   flex-direction: column;
-  flex-grow: 1;
   gap: 10px;
 }
 
@@ -299,7 +323,7 @@ img {
 }
 
 .btn:hover {
-  background-color: black;
+  background-color: #d75a42d6;
   color: white;
   transition: all 0.3s ease;
 }
@@ -309,15 +333,38 @@ canvas {
 }
 
 .editor-btn {
-margin-top: 30px;
+  margin-top: 30px;
 }
 
 .btn-2:hover {
-  background-color: #e7885f;
+  background-color: rgb(165 17 131 / 50%);
 }
 
 a.btn {
   color: black;
+}
+
+.btn-fonts {
+  height: 2.5rem;
+  width: 6.5rem;
+}
+.btn-fonts:hover{
+  background-color: transparent;
+  color: black;
+}
+
+.txt-color {
+  height: 2.5rem;
+  width: 3rem;
+}
+.txt-color:hover{
+  background-color: transparent;
+}
+
+/* saved memes */
+
+.saved-memes {
+  min-height: 30rem;
 }
 
 /* SCREENS */
